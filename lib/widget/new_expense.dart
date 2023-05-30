@@ -41,7 +41,7 @@ class _NewExpenseState extends State<NewExpense> {
         context: context,
         builder: (ctx) => AlertDialog(
           title: const Text('Invalid Input'),
-          content: const Text('Please enter a valid title and amount.'),
+          content: const Text('Please enter a valid title, amount and date.'),
           actions: [
             TextButton(
                 onPressed: () => Navigator.of(ctx).pop(),
@@ -140,7 +140,11 @@ class _NewExpenseState extends State<NewExpense> {
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: const Text('Cancel'),
+                style: ElevatedButton.styleFrom(
+                  shape: const CircleBorder(),
+                  padding: const EdgeInsets.all(4),
+                ),
+                child: const Icon(Icons.cancel_outlined),
               ),
               ElevatedButton(
                 onPressed: () {
