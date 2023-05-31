@@ -84,6 +84,8 @@ class _ExpensesState extends State<Expenses> {
 
   @override
   Widget build(BuildContext context) {
+    var widht = MediaQuery.of(context).size.width;
+
     Widget mainContent = const Center(
       child: Text('No expenses added yet!'),
     );
@@ -103,12 +105,22 @@ class _ExpensesState extends State<Expenses> {
           ),
         ],
       ),
-      body: Column(children: [
-        Chart(expenses: _registeredExpenses),
-        Expanded(
-          child: mainContent,
-        ),
-      ]),
+      body: widht < 600
+          ? Column(children: [
+              // This code creates a chart of expenses for the user.
+              Chart(expenses: _registeredExpenses),
+              Expanded(
+                child: mainContent,
+              ),
+            ])
+          : Row(children: [
+              Expanded(
+                child: Chart(expenses: _registeredExpenses),
+              ),
+              Expanded(
+                child: mainContent,
+              ),
+            ]),
     );
   }
 }
